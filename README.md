@@ -9,13 +9,11 @@ Code, data and models for cylinder, fixed robotic-fish and swimming robotic-fish
 
 The swimming-fish package also includes time-domain training and test tables, six G-series CSVs, and a saved Bi-GRU checkpoint. The training command below uses the FFT tables and creates a new checkpoint.
 
-### Original experiment files
+### Files by purpose
 
-- [Cylinder localization](mlp/legacy/Cylinder%20localization/) and [fixed robotic fish localization](mlp/legacy/Fixed%20robotic%20fish%20localization/) contain the original MLP scripts, datasets and results.
-- [Original swimming robotic fish files](swimming_fish/legacy/) contain the original Bi-GRU script, checkpoint, signal tables and test loss log.
-
-The demo commands below use the datasets, scripts and models in the current packages.
-
+- [MLP scripts](mlp/code/) contain the original TensorFlow scripts and the PyTorch workflows. [Datasets](mlp/data/) and [results](mlp/results/) are grouped by experiment. Original TensorFlow scalers are shared across modalities within each experiment.
+- [Swimming-fish files](swimming_fish/) include the Bi-GRU scripts, shared checkpoint, time-domain tables and test loss log. The [FFT tables](swimming_fish/signal_features2/) are grouped together.
+- Where same-name datasets differ, the original keeps its filename and the newer file uses the `_updated` suffix. The updated Bi-GRU entry point selects the newer FFT tables.
 
 ## 1. System requirements
 
@@ -56,7 +54,7 @@ Estimated runtime: 10-60 seconds. Select `--task fish` for the fixed robotic-fis
 The training and test FFT tables are in `swimming_fish/signal_features2/`. Run:
 
 ```powershell
-.\.venv\Scripts\python.exe .\swimming_fish\bi_gru_traj.py
+.\.venv\Scripts\python.exe .\swimming_fish\bi_gru_traj_updated.py
 ```
 
 This training demo uses 36 FFT features and sequences of five rows to train a two-layer Bi-GRU for 80 epochs. It prints epoch losses and saves `signal_features2/bi_GRU_results_<timestamp>/run/bi_GRU_model.pth` under `swimming_fish/`. Model outputs are a flag probability and two position components (`dx`, `dy`). Estimated CPU runtime: 5-30 minutes.
@@ -71,7 +69,7 @@ This training demo uses 36 FFT features and sequences of five rows to train a tw
 
 Tasks: `cylinder`, `fish`. Configurations: `V6`, `P12`, `V6+P12`, `P6`, `V4+P2`. Predictions are exported in centimetres using the stored scaling parameters; existing output files are not overwritten.
 
-The three MLP scripts are in `mlp/code/`; data and results remain in `mlp/data/` and `mlp/results/`. The MLP files include training/test features, saved weights and scalers, the seed mapping, reference metrics and validation records. Use `--output` to export per-run predictions.
+The MLP scripts are in `mlp/code/`; data and results remain in `mlp/data/` and `mlp/results/`. The MLP files include training/test features, saved weights and scalers, the seed mapping, reference metrics and validation records. Use `--output` to export per-run predictions.
 
 **Bi-GRU:** provide training and test CSVs in the configured input directory, with the 36 columns in `feature_cols` and the labels `flag`, `dx`, `dy`. Retain chronological row order and the original units. The script fits the input scaler on training data and applies it to test data.
 
