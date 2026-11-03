@@ -7,12 +7,12 @@ Code, data and models for cylinder, fixed robotic-fish and swimming robotic-fish
 | [`mlp/`](mlp/) | Cylinder and fixed robotic fish: MLP, five configurations, 20 runs each |
 | [`swimming_fish/`](swimming_fish/) | Swimming robotic fish: Bi-GRU using FFT features |
 
-The swimming-fish package also includes time-domain training and test tables, six G-series CSVs, and a saved Bi-GRU checkpoint. The training command below uses the FFT tables and creates a new checkpoint.
+The swimming-fish package also includes time-domain training and test tables and a saved Bi-GRU checkpoint. The training command below uses the FFT tables and creates a new checkpoint.
 
 ### Files by purpose
 
 - [MLP scripts](mlp/code/) contain the original TensorFlow scripts and the PyTorch workflows. [Datasets](mlp/data/) and [results](mlp/results/) are grouped by experiment. Original TensorFlow scalers are shared across modalities within each experiment.
-- [Swimming-fish files](swimming_fish/) include the Bi-GRU script, checkpoint, time-domain tables and test loss log. The [FFT tables](swimming_fish/signal_features2/) are grouped together.
+- [Swimming-fish files](swimming_fish/) include the Bi-GRU script, checkpoint and time-domain input tables. The [FFT tables](swimming_fish/signal_features2/) are training and test inputs. The [results directory](swimming_fish/results/) contains G1–G6 and the original test loss log.
 
 ## 1. System requirements
 
