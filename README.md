@@ -12,8 +12,7 @@ The swimming-fish package also includes time-domain training and test tables, si
 ### Files by purpose
 
 - [MLP scripts](mlp/code/) contain the original TensorFlow scripts and the PyTorch workflows. [Datasets](mlp/data/) and [results](mlp/results/) are grouped by experiment. Original TensorFlow scalers are shared across modalities within each experiment.
-- [Swimming-fish files](swimming_fish/) include the Bi-GRU scripts, shared checkpoint, time-domain tables and test loss log. The [FFT tables](swimming_fish/signal_features2/) are grouped together.
-- Where same-name datasets differ, the original keeps its filename and the newer file uses the `_updated` suffix. The updated Bi-GRU entry point selects the newer FFT tables.
+- [Swimming-fish files](swimming_fish/) include the Bi-GRU script, checkpoint, time-domain tables and test loss log. The [FFT tables](swimming_fish/signal_features2/) are grouped together.
 
 ## 1. System requirements
 
@@ -54,7 +53,7 @@ Estimated runtime: 10-60 seconds. Select `--task fish` for the fixed robotic-fis
 The training and test FFT tables are in `swimming_fish/signal_features2/`. Run:
 
 ```powershell
-.\.venv\Scripts\python.exe .\swimming_fish\bi_gru_traj_updated.py
+.\.venv\Scripts\python.exe .\swimming_fish\bi_gru_traj.py
 ```
 
 This training demo uses 36 FFT features and sequences of five rows to train a two-layer Bi-GRU for 80 epochs. It prints epoch losses and saves `signal_features2/bi_GRU_results_<timestamp>/run/bi_GRU_model.pth` under `swimming_fish/`. Model outputs are a flag probability and two position components (`dx`, `dy`). Estimated CPU runtime: 5-30 minutes.
