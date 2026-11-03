@@ -11,9 +11,11 @@ The swimming-fish package also includes time-domain training and test tables, si
 
 ### Original experiment files
 
-- [Cylinder localization](Cylinder%20localization/)
-- [Fixed robotic fish localization](Fixed%20robotic%20fish%20localization/)
-- [Swimming robotic fish localization](Swimming%20robotic%20fish%20localization/)
+- [Cylinder localization](mlp/legacy/Cylinder%20localization/) and [fixed robotic fish localization](mlp/legacy/Fixed%20robotic%20fish%20localization/) contain the original MLP scripts, datasets and results.
+- [Original swimming robotic fish files](swimming_fish/legacy/) contain the original Bi-GRU script, checkpoint, signal tables and test loss log.
+
+The demo commands below use the datasets, scripts and models in the current packages.
+
 
 ## 1. System requirements
 
