@@ -17,7 +17,8 @@ feature_cols = [
     'PYAL_fft1f','PYAL_fft2f','PYAM_fft1f','PYAM_fft2f','PYAR_fft1f','PYAR_fft2f',
     'PYBL_fft1f','PYBL_fft2f','PYBM_fft1f','PYBM_fft2f','PYBR_fft1f','PYBR_fft2f'
 ]
-data_dir = os.path.join(os.path.dirname(__file__), 'signal_features2')
+package_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+data_dir = os.path.join(package_dir, 'data', 'signal_features2')
 train_file = os.path.join(data_dir, 'train_fft.csv')
 test_file = os.path.join(data_dir, 'test_fft.csv')
 alpha = 3.0  # Weight for localization regression term, adjust as needed
@@ -29,7 +30,7 @@ epochs = 80
 
 # Create save directory
 report_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-base_save_dir = os.path.join(data_dir, f'bi_GRU_results_{report_timestamp}')
+base_save_dir = os.path.join(package_dir, 'results', f'bi_GRU_results_{report_timestamp}')
 os.makedirs(base_save_dir, exist_ok=True)
 
 # 1. Load data

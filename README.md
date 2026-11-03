@@ -12,7 +12,7 @@ The swimming-fish package also includes time-domain training and test tables and
 ### Files by purpose
 
 - [MLP scripts](mlp/code/) contain the original TensorFlow scripts and the PyTorch workflows. [Datasets](mlp/data/) and [results](mlp/results/) are grouped by experiment. Original TensorFlow scalers are shared across modalities within each experiment.
-- [Swimming-fish files](swimming_fish/) include the Bi-GRU script, checkpoint and time-domain input tables. The [FFT tables](swimming_fish/signal_features2/) are training and test inputs. The [results directory](swimming_fish/results/) contains G1–G6 and the original test loss log.
+- Swimming-fish [code](swimming_fish/code/) contains the Bi-GRU training script. [Data](swimming_fish/data/) contains the time-domain and FFT inputs. [Results](swimming_fish/results/) contains G1–G6, the test loss log and the saved checkpoint.
 
 ## 1. System requirements
 
@@ -50,13 +50,13 @@ Estimated runtime: 10-60 seconds. Select `--task fish` for the fixed robotic-fis
 
 ### Swimming robotic fish
 
-The training and test FFT tables are in `swimming_fish/signal_features2/`. Run:
+The training and test FFT tables are in `swimming_fish/data/signal_features2/`. Run:
 
 ```powershell
-.\.venv\Scripts\python.exe .\swimming_fish\bi_gru_traj.py
+.\.venv\Scripts\python.exe .\swimming_fish\code\bi_gru_traj.py
 ```
 
-This training demo uses 36 FFT features and sequences of five rows to train a two-layer Bi-GRU for 80 epochs. It prints epoch losses and saves `signal_features2/bi_GRU_results_<timestamp>/run/bi_GRU_model.pth` under `swimming_fish/`. Model outputs are a flag probability and two position components (`dx`, `dy`). Estimated CPU runtime: 5-30 minutes.
+This training demo uses 36 FFT features and sequences of five rows to train a two-layer Bi-GRU for 80 epochs. It prints epoch losses and saves `results/bi_GRU_results_<timestamp>/run/bi_GRU_model.pth` under `swimming_fish/`. Model outputs are a flag probability and two position components (`dx`, `dy`). Estimated CPU runtime: 5-30 minutes.
 
 ## 4. Instructions for use
 
