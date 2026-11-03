@@ -26,7 +26,7 @@ With Python 3.12 installed, open Windows PowerShell in the directory containing 
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r .\mlp\requirements.txt scikit-learn==1.6.1
+.\.venv\Scripts\python.exe -m pip install -r .\requirements.txt scikit-learn==1.6.1
 ```
 
 Estimated installation time: 5-20 minutes on the recommended desktop with broadband internet.
